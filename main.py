@@ -16,6 +16,11 @@ app = FastAPI(
 )
 
 
+@app.get("/items/{item_id}")
+async def get_items(item_id: int, count: int = 1):
+    return {"fetch": f"Fetched item number {count} of {item_id}"}
+
+
 @app.post("/data/")
 async def ingest_data(data: Data):
     if data.feature_1 < 0:
